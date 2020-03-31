@@ -1,6 +1,6 @@
 {
     "name": "kan-agency/hive-php-api",
-    "description": "",
+    "description": "An unofficial package to support the Hive Home API",
     "keywords": [
         "hive",
         "home",

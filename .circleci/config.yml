@@ -6,12 +6,13 @@ jobs:
       - image: circleci/php:7.0
     working_directory: ~/site
     steps:
+      - run: php --version
       - checkout
       - restore_cache:
           keys:
             - composer-v1-{{ checksum "composer.json" }}
             - composer-v1-
-      - run: composer install -n --prefer-dist --ignore-platform-reqs
+      - run: composer install -n --prefer-dist
       - save_cache:
           key: composer-v1-{{ checksum "composer.json" }}
           paths:
