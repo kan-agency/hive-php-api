@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+  ##
+  # Command: `docker-compose run --rm cli [...]`
+  ##
+  cli:
+    container_name: hive-cli
+    build: ./server/docker/php/cli
+    restart: 'no'
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    networks:
+      - hive
+
+networks:
+  hive:
+    driver: bridge
