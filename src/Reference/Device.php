@@ -25,7 +25,7 @@ class Device
     /**
      * @return Device
      */
-    public function make(
+    public static function make(
         string $id
     ) {
         return new static(
