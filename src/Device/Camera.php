@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Kan\Hive\Device;
 
-use Kan\Hive\Contract\Device\Power;
+use Kan\Hive\Device\Concern\Power;
 
 class Camera extends AbstractDevice implements Power
 {
@@ -15,7 +15,7 @@ class Camera extends AbstractDevice implements Power
     {
         return sprintf(
             'nodes/hivecamera/%s',
-            $this->getId()
+            $this->getDevice()->getId()
         );
     }
 

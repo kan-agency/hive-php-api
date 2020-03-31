@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Kan\Hive\Device;
 
-use Kan\Hive\Contract\Device\Trigger;
+use Kan\Hive\Device\Concern\Trigger;
 
 class Action extends AbstractDevice implements Trigger
 {
@@ -15,7 +15,7 @@ class Action extends AbstractDevice implements Trigger
     {
         return sprintf(
             'actions/%s/quick-action',
-            $this->getId()
+            $this->getDevice()->getId()
         );
     }
 

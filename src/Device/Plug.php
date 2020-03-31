@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Kan\Hive\Device;
 
-use Kan\Hive\Contract\Device\Power;
+use Kan\Hive\Device\Concern\Power;
 
 class Plug extends AbstractDevice implements Power
 {
@@ -15,7 +15,7 @@ class Plug extends AbstractDevice implements Power
     {
         return sprintf(
             'nodes/activeplug/%s',
-            $this->getId()
+            $this->getDevice()->getId()
         );
     }
 

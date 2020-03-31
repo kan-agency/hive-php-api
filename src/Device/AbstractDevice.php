@@ -4,42 +4,66 @@ declare(strict_types=1);
 
 namespace Kan\Hive\Device;
 
-use Kan\Hive\Contract\Device;
+use Kan\Hive\Device\Contract\DeviceInterface;
+use Kan\Hive\Hive;
+use Kan\Hive\Reference\Device;
 use Kan\Hive\Service\Client;
 
-abstract class AbstractDevice implements Device
+abstract class AbstractDevice implements DeviceInterface
 {
     /**
      * @var Client
      */
-    protected $client;
+    private $client;
 
     /**
-     * @var string
+     * @var Device
      */
-    protected $id;
+    private $device;
 
     public function __construct(
         Client $client,
-        string $id
+        Device $device = null
     ) {
         $this->client = $client;
-        $this->id = $id;
+
+        if (false === is_null($device)) {
+            $this->device = $device;
+        }
     }
 
     /**
-     * {@inheritdoc}
+     * Return the client instance.
      */
-    public function getClient(): Client
+    protected function getClient(): Client
     {
         return $this->client;
     }
 
     /**
-     * {@inheritdoc}
+     * Return the device instance. This is overwriteable in
+     * extended classes.
      */
-    public function getId(): string
+    protected function getDevice(): Device
     {
-        return $this->id;
+        return $this->device;
+    }
+
+    /**
+     * Return the endpoint needed for the device to be controlled.
+     */
+    abstract protected function getEndpoint(): string;
+
+    /**
+     * Helper to create an instance from a Hive instance.
+     */
+    public static function fromHive(
+        Hive $hive,
+        Device $device = null
+    ) {
+        return new static(
+            $hive->getClient(),
+            $device
+        );
     }
 }

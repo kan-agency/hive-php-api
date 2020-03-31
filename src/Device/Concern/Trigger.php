@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kan\Hive\Contract\Device;
+namespace Kan\Hive\Device\Concern;
 
 interface Trigger
 {
