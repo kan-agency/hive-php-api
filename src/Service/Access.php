@@ -30,7 +30,7 @@ class Access
     {
         try {
             $response = Client::instance()->post(
-                Client::url('global/login'),
+                Client::url('cognito/login'),
                 [
                     GuzzleRequestOptions::JSON => $this->credentials->toArray(),
                 ]
