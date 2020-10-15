@@ -10,7 +10,7 @@ class ClientTest extends AbstractTestCase
     public function urlProvider()
     {
         return [
-            ['global/login',     Client::ENDPOINT . 'global/login'],
+            ['cognito/login',    Client::ENDPOINT . 'cognito/login'],
             ['/my/url',          Client::ENDPOINT . 'my/url'],
             ['my/url   ',        Client::ENDPOINT . 'my/url'],
             ['my/url/is/here//', Client::ENDPOINT . 'my/url/is/here'],
